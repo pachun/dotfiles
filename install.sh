@@ -1,4 +1,8 @@
+# -----------
+# zsh
+# -----------
 ln -s "$PWD/zshrc" ~/.zshrc
+ln -s "$PWD/zprofile" ~/.zprofile
 ln -s "$PWD/hushlogin" ~/.hushlogin
 
 # -----------
