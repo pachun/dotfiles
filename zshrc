@@ -24,6 +24,10 @@ alias gl="git log"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
 
+# enable git completions
+# https://www.macinstruct.com/tutorials/how-to-enable-git-tab-autocomplete-on-your-mac/
+autoload -Uz compinit && compinit
+
 # ZSH + Homebrew -> https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
