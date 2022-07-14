@@ -32,7 +32,13 @@ Plug 'tpope/vim-rails'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-test/vim-test'
 Plug 'jgdavey/tslime.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
+
+" apply prettier when files are saved
+" https://github.com/prettier/vim-prettier#configuration
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " setup for vim-test & tslime to run tests in sibling tmux panes:
 let mapleader=" "
