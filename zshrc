@@ -21,6 +21,7 @@ alias mr="lab mr create origin develop3"
 alias gco="git checkout"
 alias gri="git rebase -i"
 alias gl="git log"
+alias gb="git branch"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
 
