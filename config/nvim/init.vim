@@ -25,14 +25,26 @@ set mouse=a " enable mouse clicks and scrolling
 set nocompatible
 
 call plug#begin()
+" Move between tmux panes & tmux panes w/ open vim buffers (more in tmux.conf):
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'sainnhe/everforest'
+" comment lines & blocks w/ control (held) and -- (- tapped twice):
 Plug 'tomtom/tcomment_vim'
+" I use this for special rails syntax highlighting (like rspec files):
 Plug 'tpope/vim-rails'
+" This is the best syntax highlighting plugin I've found (react, etc):
 Plug 'sheerun/vim-polyglot'
+" run tests from vim buffers:
 Plug 'vim-test/vim-test'
+" run tests from vim buffers in other tmux panes:
 Plug 'jgdavey/tslime.vim'
+" I use this mostly for `:Git blame` in open vim buffers
+Plug 'tpope/vim-fugitive'
+" format files according to prettier's rules:
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+" everforest is my terminal & vim color scheme
+Plug 'sainnhe/everforest'
+" asynchronous lint engine (I use :AleDetail a lot):
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " apply prettier when files are saved
