@@ -45,7 +45,11 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'sainnhe/everforest'
 " asynchronous lint engine (I use :AleDetail a lot):
 Plug 'dense-analysis/ale'
+" todo lists in vim (trying it out for now)
+Plug 'aserebryakov/vim-todo-lists'
 call plug#end()
+
+noremap <buffer> <leader>e :silent call VimTodoListsToggleItem()<CR>
 
 " apply prettier when files are saved
 " https://github.com/prettier/vim-prettier#configuration

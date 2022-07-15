@@ -24,6 +24,7 @@ alias gl="git log"
 alias gb="git branch"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
+alias todos="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Todos/$(date +%m-%d-%Y).todo.md"
 
 # enable git completions
 # https://www.macinstruct.com/tutorials/how-to-enable-git-tab-autocomplete-on-your-mac/
