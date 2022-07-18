@@ -45,6 +45,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'sainnhe/everforest'
 " asynchronous lint engine (I use :AleDetail a lot):
 Plug 'dense-analysis/ale'
+" format go files on save
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " todo lists in vim (trying it out for now)
 Plug 'aserebryakov/vim-todo-lists'
 call plug#end()
