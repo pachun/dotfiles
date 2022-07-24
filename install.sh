@@ -19,7 +19,8 @@ ln -s "$PWD/tmux.conf" ~/.tmux.conf
 # -----------
 # neovim
 # -----------
-ln -s "$PWD/config" ~/.config
+mkdir -p ~/.config/nvim
+ln -s "$PWD/config/nvim/init.vim" ~/.config/nvim/init.vim
 
 # install vim plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
