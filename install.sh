@@ -17,6 +17,11 @@ ln -s "$PWD/gitconfig" ~/.gitconfig
 ln -s "$PWD/tmux.conf" ~/.tmux.conf
 
 # -----------
+# psql (use vim hokeys in psql)
+# -----------
+ln -s "$PWD/inputrc" ~/.inputrc
+
+# -----------
 # neovim
 # -----------
 mkdir -p ~/.config/nvim

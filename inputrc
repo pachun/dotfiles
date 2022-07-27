@@ -1,0 +1,14 @@
+# this file's purpose is to use vim hotkeys in command line
+# apps which use GNU's readline. I mainly use it for psql.
+
+# turn off the terminal bell
+set bell-style none
+
+# use vim hotkeys
+set editing-mode vi
+
+# use jj instead of escape
+$if mode=vi
+  set keymap vi-insert
+  "jj": vi-movement-mode
+$endif
