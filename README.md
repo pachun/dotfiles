@@ -2,7 +2,7 @@
 
 Install the fonts in `/MonoLisa`
 
-Install `tmux-256color` for tmux:
+Install `tmux-256color` for tmux
 
 ```
 curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
@@ -17,7 +17,16 @@ brew bundle
 ./install.sh
 ```
 
-iTerm2 preferences:
+Install the prettier executable
+
+```
+asdf plugin add nodejs
+asdf install nodejs latest
+asdf global nodejs latest
+npm install -g prettier
+```
+
+iTerm2 preferences
 
 ```
 # functional customizations:
