@@ -9,6 +9,8 @@ command! Q q
 
 " my pinky muscles are weak
 imap jj <Esc>
+imap Jj <Esc>
+imap JJ <Esc>
 
 set clipboard=unnamed " share system clipboard
 set expandtab " replace tabs with spaces
