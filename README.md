@@ -1,5 +1,7 @@
 # Nick Pachulski's Dotfiles
 
+[Install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) (Do this first. It takes a long time.)
+
 Install the fonts in `/MonoLisa`
 
 Install `tmux-256color` for tmux
@@ -14,6 +16,11 @@ Install [homebrew](https://brew.sh)
 
 ```
 brew bundle
+```
+
+Install the dotfiles
+
+```
 ./install.sh
 ```
 
