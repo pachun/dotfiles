@@ -52,6 +52,12 @@ Install the vim plugs
 vim +'PlugInstall --sync' +qa
 ```
 
+Start postgres now & every time you login (it's important to do this before `bundle`ing a rails project including the `pg` gem.)
+
+```sh
+brew services start postgresql
+```
+
 Install the prettier executable
 
 ```sh
