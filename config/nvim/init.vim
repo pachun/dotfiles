@@ -53,6 +53,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'aserebryakov/vim-todo-lists'
 call plug#end()
 
+" requires disabling polyglot's elm stuff, above
+" requires `npm install -g elm-format`
+let g:ale_fixers = { 'elm': ['elm-format']}
+let g:ale_fix_on_save = 1
+
 noremap <buffer> <leader>e :silent call VimTodoListsToggleItem()<CR>
 
 " apply prettier when files are saved
