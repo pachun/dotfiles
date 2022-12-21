@@ -25,7 +25,8 @@ alias gb="git branch"
 alias gm="git merge"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
-alias todos="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Todos/$(date +%m-%d-%Y).todo.md"
+
+alias elmsandbox="wget https://gist.githubusercontent.com/pachun/1def1dbef34f87527ec1344445a3f076/raw/15aff080f61bed5ac914a4af46d1a15a0fe66a16/Lolcode.elm"
 
 # enable git completions
 # https://www.macinstruct.com/tutorials/how-to-enable-git-tab-autocomplete-on-your-mac/
