@@ -28,6 +28,7 @@ ln -s "$PWD/vimrc" ~/.vimrc
 mkdir -p ~/.config/nvim
 ln -s "$PWD/config/nvim/init.vim" ~/.config/nvim/init.vim
 ln -s "$PWD/config/nvim/coc-defaults.vim" ~/.config/nvim/coc-defaults.vim
+ln -s "$PWD/config/nvim/coc-settings.json" ~/.config/nvim/coc-settings.json
 
 # install vim plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
