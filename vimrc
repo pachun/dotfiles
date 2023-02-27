@@ -23,6 +23,9 @@ syntax enable " enable syntax highlighting
 set backspace=indent,eol,start " allow backspacing in insert mode
 set mouse=a " enable mouse clicks and scrolling
 set noswapfile " disable swapfiles; they're annoying
+set statusline=%F " show filenames in the status line
+set statusline+=\ col:\ %c " show column numbers in the status line
+set statusline+=\ %m " show whether there are changes since the last save in the status line
 
 call plug#begin()
 " Move between tmux panes & tmux panes w/ open vim buffers (more in tmux.conf):
