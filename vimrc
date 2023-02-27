@@ -73,5 +73,12 @@ autocmd vimenter * ++nested colorscheme everforest
 " format elm files on save
 autocmd BufWritePre *.elm execute ":call CocAction('format')"
 
+" :w in dirWhichDoesntExist/myNewFile.txt will create the dir and then save
+" the file instead of erroring because the dir doesn't exist
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
+
 " coc defaults from https://github.com/neoclide/coc.nvim#example-vim-configuration
 source ~/.config/nvim/coc-defaults.vim
