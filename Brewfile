@@ -1,5 +1,5 @@
 cask "homebrew/cask-versions/iterm2-nightly"
-cask "rowanj-gitx"
+cask "gitx"
 brew "neovim"
 brew "tmux"
 brew "the_silver_searcher"
