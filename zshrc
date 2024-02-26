@@ -25,6 +25,10 @@ alias gb="git branch"
 alias gm="git merge"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
+alias gc="git commit -a"
+killportprocess() {
+  kill -9 $(lsof -ti:$1)
+};
 
 alias elmsandbox="wget https://gist.githubusercontent.com/pachun/1def1dbef34f87527ec1344445a3f076/raw/15aff080f61bed5ac914a4af46d1a15a0fe66a16/Lolcode.elm"
 
