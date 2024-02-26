@@ -29,6 +29,9 @@ alias gc="git commit -a"
 killportprocess() {
   kill -9 $(lsof -ti:$1)
 };
+gitkeep () {
+  git branch | grep -v "$1" | xargs git branch -D
+}
 
 alias elmsandbox="wget https://gist.githubusercontent.com/pachun/1def1dbef34f87527ec1344445a3f076/raw/15aff080f61bed5ac914a4af46d1a15a0fe66a16/Lolcode.elm"
 
