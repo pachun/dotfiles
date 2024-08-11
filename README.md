@@ -96,3 +96,11 @@ brew install --cask telegram # https://formulae.brew.sh/cask/telegram
 ```
 
 [Install Newtown](https://newtonhq.com)
+
+# New Notes
+
+After brew install, set iterm font to meslo nerd font
+
+brew install ripgrep & we want node; they do it with brew; we use asdf
+
+Install both iterm themes and set them to the system color

@@ -1,4 +1,4 @@
-if [ "$TMUX" = "" ]; then exec tmux; fi
+# if [ "$TMUX" = "" ]; then exec tmux; fi
 
 # enable colorized output
 export CLICOLOR=1
@@ -105,3 +105,13 @@ function use_custom_prompt {
 }
 
 use_custom_prompt
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/nick/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export PATH=$PATH:/Users/nick/.spicetify
