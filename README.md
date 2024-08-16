@@ -1,4 +1,4 @@
-# my dotfiles
+# my dotfiles -- NEEDS UPDATING
 
 ![iTerm](https://i.imgur.com/B4s6HPG.png)
 

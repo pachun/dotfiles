@@ -26,6 +26,7 @@ alias gm="git merge"
 alias wip="git add .; git commit -am 'wip' --no-verify"
 alias lanip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
 alias gc="git commit -a"
+alias gh='open $(git remote get-url origin | sed "s/\.git$//" | sed "s/git@github.com:/https:\/\/github.com\//")'
 killportprocess() {
   kill -9 $(lsof -ti:$1)
 };
@@ -35,32 +36,74 @@ gitkeep () {
 
 alias elmsandbox="wget https://gist.githubusercontent.com/pachun/1def1dbef34f87527ec1344445a3f076/raw/15aff080f61bed5ac914a4af46d1a15a0fe66a16/Lolcode.elm"
 
+# ZSH + Homebrew -> https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# defined in your iterm colors profile (the ansi colors)
+COLOR_BLACK=0
+COLOR_RED=1
+COLOR_GREEN=2
+COLOR_YELLOW=3
+COLOR_BLUE=4
+COLOR_MAGENTA=5
+COLOR_CYAN=6
+COLOR_WHITE=7
+
+COLOR_BRIGHT_BLACK=8
+COLOR_BRIGHT_RED=9
+COLOR_BRIGHT_GREEN=10
+COLOR_BRIGHT_YELLOW=11
+COLOR_BRIGHT_BLUE=12
+COLOR_BRIGHT_MAGENTA=13
+COLOR_BRIGHT_CYAN=14
+COLOR_BRIGHT_WHITE=15
+
 # enable git completions
 # https://www.macinstruct.com/tutorials/how-to-enable-git-tab-autocomplete-on-your-mac/
 autoload -Uz compinit && compinit
 
-# ZSH + Homebrew -> https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # ZSH syntax highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-function use_custom_prompt {
-  # https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
-  function allow_prompt_string_interpolation {
-    setopt promptsubst
-  }
+# ZSH_HIGHLIGHT_STYLES[command]='fg=12'  # ANSI Bright Blue (or set this to the index for green in light mode)
+# ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=9'  # ANSI Bright Red (or set this to the index for red in dark mode)
 
+function use_custom_prompt {
+  # Set prompt components
   function directory {
-    echo "%F{blue}%1~%f "
+    echo "%F{$COLOR_BRIGHT_BLUE}%1~%f"
   }
 
   function vim_mode {
     if [[ $VIMODE == 'vicmd' ]]; then
-      echo "%F{red}✘%f "
+      echo "%F{$COLOR_BRIGHT_RED}✘%f"
     else
-      echo "%F{green}✔%f "
+      echo "%F{$COLOR_BRIGHT_GREEN}✔%f"
     fi
+  }
+
+  function status_colored_git_branch {
+    if $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+      git_branch=$(git branch | awk '/\*/ { print $2; }')
+      git_status=$(git status)
+      if [[ -n "$(echo $git_status | grep 'Changes not staged')" ]]; then
+        echo "%F{$COLOR_BRIGHT_RED}$git_branch%f"
+      elif [[ -n "$(echo $git_status | grep 'rebasing')" ]]; then
+        echo "%F{$COLOR_BRIGHT_RED}(rebase in progress)%f"
+      elif [[ -n "$(echo $git_status | grep 'Changes to be committed')" ]]; then
+        echo "%F{$COLOR_BRIGHT_YELLOW}$git_branch%f"
+      elif [[ -n "$(echo $git_status | grep 'Untracked files')" ]]; then
+        echo "%F{$COLOR_BRIGHT_CYAN}$git_branch%f"
+      else
+        echo "%F{$COLOR_BRIGHT_GREEN}$git_branch%f"
+      fi
+    else
+      echo ""
+    fi
+  }
+
+  function allow_prompt_string_interpolation {
+    setopt promptsubst
   }
 
   function keep_vim_mode_current {
@@ -69,42 +112,21 @@ function use_custom_prompt {
       zle reset-prompt
     }
 
-    function editing {
-      return $VIMODE == 'main'
-    }
-
     zle -N zle-line-init
     zle -N zle-keymap-select
   }
 
-  function status_colored_git_branch {
-    if $(git rev-parse --is-inside-work-tree > /dev/null 2>&1)
-    then
-      git_branch=$(git branch | awk '/\*/ { print $2; }')
-      git_status=$(git status)
-      if [ -n "$(echo $git_status | grep "Changes not staged")" ]; then
-        echo "%F{red}$git_branch%f "
-      elif [ -n "$(echo $git_status | grep "rebasing")" ]; then
-        echo "%F{red}(rebase in progress)%f "
-      elif [ -n "$(echo $git_status | grep "Changes to be committed")" ]; then
-        echo "%F{yellow}$git_branch%f "
-      elif [ -n "$(echo $git_status | grep "Untracked files")" ]; then
-        echo "%F{cyan}$git_branch%f "
-      else
-        echo "%F{green}$git_branch%f "
-      fi
-    else
-      echo ""
-    fi
-  }
-
+  # Apply the settings
   allow_prompt_string_interpolation
   keep_vim_mode_current
 
-  PROMPT='$(directory)$(status_colored_git_branch)$(vim_mode)'
+  # Combine the prompt components
+  PROMPT='$(directory) $(status_colored_git_branch) $(vim_mode) '
 }
 
 use_custom_prompt
+
+eval "$(direnv hook zsh)"
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/nick/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
@@ -115,3 +137,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:/Users/nick/.spicetify
+
+# bun completions
+[ -s "/Users/nick/.bun/_bun" ] && source "/Users/nick/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

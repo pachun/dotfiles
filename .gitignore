@@ -1,3 +1,4 @@
 Brewfile.lock.json
 terminfo.src
 dotfiles/config/iterm2
+dotfiles/config/lab/lab.toml

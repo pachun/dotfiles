@@ -1,6 +1,4 @@
-# for file in $PWD/dotfiles/*; do echo "$file"; done
-
 for file in $PWD/dotfiles/*; do
-	filename=$(basename "$file")
-	ln -sf "$file" "$HOME/.$filename"
+  filename=$(basename "$file")
+  ln -sf "$file" "$HOME/.$filename"
 done

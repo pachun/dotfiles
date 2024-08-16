@@ -27,16 +27,17 @@ vim.g.maplocalleader = "\\"
 -- our custom configuration
 require("config.keymaps")
 require("config.options")
+require("config.testing")
 -- end custom configuration
 -- ************************
 
 -- Setup lazy.nvim
-require("lazy").setup("plugins", {
+require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
   checker = {
     enabled = true,
     notify = false,
   },
   change_detection = {
-    notify = false
+    notify = false,
   },
 })
