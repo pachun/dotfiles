@@ -109,7 +109,7 @@ local function run_nearest_rspec_test_command()
 end
 
 local function run_nearest_elixir_test_command()
-	return "clear; iex -S mix test " .. filename() .. ":" .. line_number()
+	return "clear; mix test " .. filename() .. ":" .. line_number()
 end
 
 local function run_rspec_test_file_command()
