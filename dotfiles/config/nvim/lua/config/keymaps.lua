@@ -9,6 +9,10 @@ vim.keymap.set("n", "<leader>de", "<C-w>=", { desc = "Make splits equal size" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Close file" })
 
+-- map :W to :w and :Q to :q because holding shift is too easy to do
+vim.cmd("command! W w")
+vim.cmd("command! Q q")
+
 -- tab management
 -- vim.keymap.set("n", "<leader>tk", "<cmd>tabnew<CR>", { desc = "Open a new tab" })
 -- vim.keymap.set("n", "<leader>tj", "<cmd>tabclose<CR>", { desc = "Close the current tab" })

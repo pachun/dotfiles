@@ -2,6 +2,10 @@ local function filename()
 	return vim.fn.expand("%:p")
 end
 
+local function jest_filename()
+	return filename():gsub("([%[%]()%./])", "\\%1")
+end
+
 local function line_number()
 	return vim.api.nvim_win_get_cursor(0)[1]
 end
@@ -91,13 +95,17 @@ local function run_nearest_jest_test_command()
 
 	test_description = test_description:gsub('"', '\\"')
 
-	local test_command = "clear; yarn test " .. filename() .. ' --testNamePattern="' .. test_description .. '"'
+	local test_command = "clear; yarn test --testPathPattern='"
+		.. jest_filename()
+		.. "' --testNamePattern=\""
+		.. test_description
+		.. '"'
 
 	return test_command
 end
 
 local function run_jest_test_file_command()
-	return "clear; yarn test " .. filename()
+	return "clear; yarn test --testPathPattern='" .. jest_filename() .. "'"
 end
 
 local function run_all_jest_tests_command()

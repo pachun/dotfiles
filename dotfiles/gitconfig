@@ -5,7 +5,7 @@
 [format]
   pretty = format:%C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an, %cr]%Creset
 [user]
-  name = Nick Pachulski
-  email = nick@pachulski.me
+	name = Nick Pachulski
+	email = nick@pachulski.me
 [github]
   user = pachun
